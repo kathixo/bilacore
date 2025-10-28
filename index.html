@@ -1,0 +1,352 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Bilacore Petroleums — Home</title>
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- AOS for scroll animations -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+  <!-- Google font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --accent:#FF6B1A;
+      --accent-2:#E63946;
+      --bg:#000;
+      --muted: rgba(255,255,255,0.08);
+      --glass: rgba(255,255,255,0.08);
+    }
+
+    body { font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; background:var(--bg); color:#fff; overflow-x:hidden;}
+
+    /* ======================= HEADER ======================= */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(0,0,0,0.6);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      transition: background .3s;
+    }
+    header.scrolled {
+      background: rgba(0,0,0,0.9);
+      box-shadow: 0 2px 15px rgba(255,107,26,0.15);
+    }
+    nav a {
+      position: relative;
+      padding-bottom: 4px;
+    }
+    nav a::after {
+      content:"";
+      position:absolute;
+      bottom:0;
+      left:0;
+      width:0;
+      height:2px;
+      background:linear-gradient(90deg,var(--accent),var(--accent-2));
+      transition:width .3s;
+    }
+    nav a:hover::after { width:100%; }
+
+    /* ======================= HERO ======================= */
+    .hero-overlay {
+      background: linear-gradient(180deg, rgba(0,0,0,0.6) 30%, rgba(0,0,0,0.9) 100%);
+      position: absolute;
+      inset: 0;
+    }
+    .hero-content {
+      animation: fadeIn 1.6s ease-out forwards;
+    }
+    @keyframes fadeIn {
+      0% { opacity:0; transform:translateY(40px);}
+      100% { opacity:1; transform:translateY(0);}
+    }
+
+    /* Animated floating orbs */
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.15;
+      filter: blur(60px);
+      animation: float 12s infinite ease-in-out alternate;
+    }
+    .orb.orange { background: var(--accent); width: 180px; height: 180px; top: 15%; left: 5%; animation-delay: 1s; }
+    .orb.red { background: var(--accent-2); width: 220px; height: 220px; bottom: 5%; right: 10%; animation-delay: 2s; }
+
+    @keyframes float {
+      0% { transform: translateY(0) translateX(0);}
+      100% { transform: translateY(-40px) translateX(30px);}
+    }
+     body { font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; background:var(--bg); color:#fff; }
+    /* hero overlay and glow */
+    .hero-glow { box-shadow: 0 30px 80px rgba(255,107,26,0.08), inset 0 -40px 120px rgba(230,57,70,0.02); }
+    .glass { background: rgba(255,255,255,0.03); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); border: 1px solid rgba(255,255,255,0.04); }
+    .btn-grad { background: linear-gradient(90deg,var(--accent),var(--accent-2)); color:#000; }
+    /* subtle parallax */
+    .parallax { transform: translateZ(0); will-change: transform; }
+    /* testimonial dots */
+    .dot { width:10px; height:10px; border-radius:9999px; background:rgba(255,255,255,0.18); display:inline-block; margin:0 6px; }
+    .dot.active { background:var(--accent); box-shadow:0 4px 18px rgba(255,107,26,0.25); }
+
+    /* ======================= FOOTER ======================= */
+    footer {
+      background: linear-gradient(to right, #070707, #101010);
+      position: relative;
+      overflow: hidden;
+    }
+    footer::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top left, rgba(255,107,26,0.08), transparent 60%),
+                  radial-gradient(circle at bottom right, rgba(230,57,70,0.08), transparent 60%);
+    }
+    .footer-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 9999px;
+      background: rgba(255,255,255,0.05);
+      transition: all .3s ease;
+    }
+    .footer-icon:hover {
+      background: linear-gradient(90deg,var(--accent),var(--accent-2));
+      transform: scale(1.1);
+    }
+
+    /* ======================= RESPONSIVE ======================= */
+    @media (max-width:768px){
+      .hero-content h1{ font-size: 2.4rem; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="container mx-auto px-6 py-4 flex items-center justify-between">
+    <a href="index.html" class="flex items-center gap-3">
+      <img src="images/logo.jpg" alt="BILACORE" class="h-14 w-auto rounded-lg">
+      <div>
+        <div class="text-xl font-extrabold text-white">Bilacore</div>
+        <div class="text-xs text-gray-400 tracking-wide">PETROLEUMS</div>
+      </div>
+    </a>
+
+    <nav class="hidden md:flex items-center gap-8 text-white/85 font-medium">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="products_services.html">Products & Services</a>
+      <a href="fuel-prices.html">Fuel Prices</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+
+    <div class="md:hidden">
+      <button id="menuBtn" class="p-2 rounded-md bg-white/10">Menu</button>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="relative overflow-hidden">
+    <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover opacity-60">
+      <source src="https://cdn.coverr.co/videos/coverr-petrol-station-at-dusk-1661?token=eyJhbGciOi..." type="video/mp4">
+    </video>
+
+    <div class="hero-overlay"></div>
+    <div class="orb orange"></div>
+    <div class="orb red"></div>
+
+    <div class="relative container mx-auto px-6 py-40 hero-content text-center">
+      <h1 class="text-5xl md:text-6xl font-extrabold mb-4 leading-tight">
+        Powering the <span class="text-[var(--accent)]">Future</span> with <br>
+        <span class="text-[var(--accent-2)]">Reliability</span> & <span class="text-[var(--accent)]">Sustainability</span>
+      </h1>
+      <p class="text-lg text-white/85 mb-8 max-w-2xl mx-auto">
+        Premium fuels • Fast deliveries • Eco-aware solutions for fleets & industries.
+      </p>
+      <div class="flex flex-col md:flex-row gap-4 justify-center items-center">
+        <a href="services.html" class="bg-gradient-to-r from-[var(--accent)] to-[var(--accent-2)] px-6 py-3 rounded-lg font-semibold text-black shadow-lg hover:scale-105 transition">Explore Services</a>
+        <a href="contact.html" class="px-6 py-3 rounded-lg border border-white/20 text-white hover:bg-white/10 transition">Request a Quote</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Us (rich cards with icons + images) -->
+  <section class="container mx-auto px-6 py-16">
+    <div class="grid md:grid-cols-3 gap-8">
+      <div class="p-6 rounded-xl glass hover:scale-105 transition" data-aos="fade-right">
+        <img src="images/premium fuel.jpg" class="w-full h-40 object-cover rounded-md mb-4" alt="">
+        <h3 class="text-xl font-semibold mb-2">Premium Fuel</h3>
+        <p class="text-white/70">Quality-assured fuels that keep engines cleaner and operations efficient.</p>
+      </div>
+
+      <div class="p-6 rounded-xl glass hover:scale-105 transition" data-aos="fade-up">
+        <img src="images/24.jpg" class="w-full h-40 object-cover rounded-md mb-4" alt="">
+        <h3 class="text-xl font-semibold mb-2">Fast Service</h3>
+        <p class="text-white/70">Rapid fleet deliveries and 24/7 emergency support for businesses.</p>
+      </div>
+
+      <div class="p-6 rounded-xl glass hover:scale-105 transition" data-aos="fade-left">
+        <img src="images/eco.jpg" class="w-full h-40 object-cover rounded-md mb-4" alt="">
+        <h3 class="text-xl font-semibold mb-2">Eco-Friendly</h3>
+        <p class="text-white/70">Sustainable sourcing and cleaner fuel initiatives to lower your footprint.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services preview (image + overlay + CTA) -->
+  <section class="container mx-auto px-6 pb-16">
+    <h2 class="text-3xl font-bold text-center mb-8" data-aos="fade-up">Our Core Services</h2>
+    <div class="grid md:grid-cols-3 gap-6">
+      <!-- Service card -->
+      <article class="relative rounded-xl overflow-hidden shadow-lg group" data-aos="fade-up" data-aos-delay="60">
+        <img src="images/background.png" class="w-full h-56 object-cover group-hover:scale-105 transition-transform" alt="">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent p-6 flex flex-col justify-end">
+          <h3 class="text-xl font-semibold">Fuel Supply & Distribution</h3>
+          <p class="text-sm text-white/80 mt-2">24/7 delivery • Bulk supply • Fleet fueling</p>
+        </div>
+      </article>
+
+      <article class="relative rounded-xl overflow-hidden shadow-lg group" data-aos="fade-up" data-aos-delay="120">
+        <img src="images/lubricants.jpg" class="w-full h-56 object-cover group-hover:scale-105 transition-transform" alt="">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent p-6 flex flex-col justify-end">
+          <h3 class="text-xl font-semibold">Industrial Lubricants</h3>
+          <p class="text-sm text-white/80 mt-2">Engine oils • Hydraulic fluids • Grease</p>
+        </div>
+      </article>
+
+      <article class="relative rounded-xl overflow-hidden shadow-lg group" data-aos="fade-up" data-aos-delay="180">
+        <img src="images/tank.jpg" class="w-full h-56 object-cover group-hover:scale-105 transition-transform" alt="">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent p-6 flex flex-col justify-end">
+          <h3 class="text-xl font-semibold">Equipment Maintenance</h3>
+          <p class="text-sm text-white/80 mt-2">Preventive maintenance • Inspections • Repairs</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- Testimonials slider (simple) -->
+  <section class="container mx-auto px-6 pb-20">
+    <h2 class="text-3xl font-bold text-center mb-8" data-aos="fade-up">What our clients say</h2>
+    <div class="max-w-3xl mx-auto relative">
+      <div id="testimonials" class="relative overflow-hidden rounded-xl glass p-8">
+        <blockquote id="quote" class="text-center text-lg italic text-white/90">"Bilacore delivers on time, every time — fleet uptime improved by 23%."</blockquote>
+        <div class="mt-6 text-center text-white/70" id="author">— M. Nkosi, Fleet Manager</div>
+      </div>
+
+      <!-- dots -->
+      <div class="flex justify-center mt-4" id="dots">
+        <span class="dot active"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- big CTA -->
+  <section class="container mx-auto px-6 pb-32 text-center">
+    <div class="max-w-3xl mx-auto p-10 rounded-2xl glass hero-glow">
+      <h3 class="text-2xl font-bold mb-4">Ready to reduce your fleet costs?</h3>
+      <p class="text-white/80 mb-6">Get a quick quote for bulk fuel supply and fleet solutions.</p>
+      <a href="contact.html" class="btn-grad px-6 py-3 rounded-lg font-semibold shadow-lg hover:scale-105 transition">Request a Quote</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+<footer class="py-12 text-white relative">
+    <div class="container mx-auto px-6 grid md:grid-cols-3 gap-10 relative z-10">
+      <div>
+        <img src="images/logo.jpg" alt="Bilacore" class="h-16 mb-3 rounded-md">
+        <p class="font-semibold text-lg">BILACORE PETROLEUMS</p>
+        <p class="text-sm text-gray-400">Powering industries with precision, speed & integrity.</p>
+        <div class="flex gap-3 mt-4">
+          <a href="#" class="footer-icon"><img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" class="w-5" alt="Facebook"></a>
+          <a href="#" class="footer-icon"><img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" class="w-5" alt="Twitter"></a>
+          <a href="#" class="footer-icon"><img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" class="w-5" alt="LinkedIn"></a>
+        </div>
+      </div>
+
+      <div>
+        <h4 class="font-bold mb-3 text-[var(--accent)]">Quick Links</h4>
+        <ul class="space-y-2 text-gray-300">
+          <li><a href="products_services.html"class="hover:text-[var(--accent)]">Products & Services</a></li>
+          <li><a href="fuel-prices.html" class="hover:text-[var(--accent)]">Fuel Prices</a></li>
+          <li><a href="about.html" class="hover:text-[var(--accent)]">About</a></li>
+          <li><a href="contact.html" class="hover:text-[var(--accent)]">Contact</a></li>
+        </ul>
+      </div>
+
+            <div class="flex flex-col space-y-6 text-white/90" data-aos="fade-left">
+  <!-- Phone -->
+  <div class="flex items-center gap-4">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-orange-500 drop-shadow-[0_0_10px_rgba(255,107,26,0.6)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.586a1 1 0 01.707.293l2.414 2.414a1 1 0 01.293.707V7a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
+      <path stroke-linecap="round" stroke-linejoin="round" d="M16 7h4a2 2 0 012 2v2.586a1 1 0 01-.293.707l-2.414 2.414a1 1 0 01-.707.293H16a2 2 0 01-2-2v-4a2 2 0 012-2z"/>
+    </svg>
+    <span>+27 65 966 4121</span>
+  </div>
+
+  <!-- Address -->
+  <div class="flex items-center gap-4">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-orange-500 drop-shadow-[0_0_10px_rgba(255,107,26,0.6)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M12 2C8.134 2 5 5.134 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.866-3.134-7-7-7z"/>
+      <circle cx="12" cy="9" r="2" stroke="none" fill="currentColor"/>
+    </svg>
+    <span>318 Zone B, Park Ave, Lulekani</span>
+  </div>
+
+  <!-- Email -->
+  <div class="flex items-center gap-4">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-orange-500 drop-shadow-[0_0_10px_rgba(255,107,26,0.6)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M16 12H8m8-4H8m0 8h8m2 2H6a2 2 0 01-2-2V6a2 2 0 012-2h12a2 2 0 012 2v12a2 2 0 01-2 2z"/>
+    </svg>
+    <span>info@bilacorepetroleums.co.za</span>
+  </div>
+</div>
+    </div>
+    <div class="text-center text-gray-500 text-sm mt-10">© 2025 Bilacore Petroleums. All rights reserved.</div>
+  </footer>
+
+  <!-- JS -->
+  <script>
+    AOS.init({ once:true, duration:800, easing:'ease-out-cubic' });
+
+    window.addEventListener("scroll", () => {
+      const header = document.querySelector("header");
+      header.classList.toggle("scrolled", window.scrollY > 10);
+    });
+  </script>
+
+  <!-- Scripts -->
+  <script>
+    AOS.init({ once:true, duration:800, easing:'ease-out-cubic' });
+
+    // Testimonials rotation
+    const quotes = [
+      { q: "Bilacore delivers on time, every time — fleet uptime improved by 23%.", a: "— M. Nkosi, Fleet Manager" },
+      { q: "Their emergency refueling saved our operations during a blackout — reliable & professional.", a: "— S. Dlamini, Operations Head" },
+      { q: "Premium fuels and excellent support. Our engines run smoother and longer.", a: "— R. van der Merwe, Logistics" }
+    ];
+    let ti = 0;
+    const quoteEl = document.getElementById('quote');
+    const authorEl = document.getElementById('author');
+    const dots = document.querySelectorAll('.dot');
+
+    function showTest(i){
+      quoteEl.style.opacity=0; authorEl.style.opacity=0;
+      setTimeout(()=>{ quoteEl.textContent = quotes[i].q; authorEl.textContent = quotes[i].a; quoteEl.style.opacity=1; authorEl.style.opacity=1; }, 300);
+      dots.forEach((d,idx)=> d.classList.toggle('active', idx===i));
+    }
+    setInterval(()=>{ ti = (ti+1)%quotes.length; showTest(ti); }, 4500);
+  </script>
+
+</body>
+</html>

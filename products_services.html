@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Bilacore Petroleums — Services & Products</title>
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- AOS for scroll animations -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+  <!-- Google font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bilacore-accent:#FF6B1A;
+      --bilacore-accent-2:#E63946;
+      --bilacore-black:#000;
+      --bilacore-muted: rgba(255,255,255,0.08);
+    }
+
+    body { font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; background:var(--bilacore-black); color:#fff; overflow-x:hidden;}
+
+    header { position: sticky; top: 0; z-index: 50; background: rgba(0,0,0,0.6); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255,255,255,0.08); transition: background .3s; }
+    header.scrolled { background: rgba(0,0,0,0.9); box-shadow: 0 2px 15px rgba(255,107,26,0.15); }
+    nav a { position: relative; padding-bottom: 4px; }
+    nav a::after { content:""; position:absolute; bottom:0; left:0; width:0; height:2px; background:linear-gradient(90deg,var(--bilacore-accent),var(--bilacore-accent-2)); transition:width .3s; }
+    nav a:hover::after { width:100%; }
+
+    .glass { background: rgba(255,255,255,0.03); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); border: 1px solid rgba(255,255,255,0.04); }
+    .btn-grad { background: linear-gradient(90deg,var(--bilacore-accent),var(--bilacore-accent-2)); color:#000; }
+    .shadow-glow-accent { box-shadow: 0 10px 25px rgba(255,107,26,0.4); }
+
+    .toggle-btn { padding:0.6rem 1.4rem; border-radius:9999px; cursor:pointer; transition: all .3s; }
+    .toggle-btn.active { background: linear-gradient(90deg,var(--bilacore-accent),var(--bilacore-accent-2)); color:#000; }
+
+    .card { background: rgba(0,0,0,0.6); border-radius:1rem; overflow:hidden; transition: all 0.3s; }
+    .card:hover { box-shadow: 0 0 25px rgba(255,107,26,0.6); transform: scale(1.03); }
+    .card img { width:100%; height:200px;  }
+    .card-content { padding:1rem; }
+
+    .product-features { list-style: disc; padding-left:1rem; margin-top:0.5rem; color:#fff; opacity:0.85; }
+
+    footer { background: linear-gradient(to right, #070707, #101010); position: relative; overflow: hidden; }
+    footer::before { content: ""; position: absolute; inset: 0; background: radial-gradient(circle at top left, rgba(255,107,26,0.08), transparent 60%), radial-gradient(circle at bottom right, rgba(230,57,70,0.08), transparent 60%); }
+    .footer-icon { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 9999px; background: rgba(255,255,255,0.05); transition: all .3s ease; }
+    .footer-icon:hover { background: linear-gradient(90deg,var(--bilacore-accent),var(--bilacore-accent-2)); transform: scale(1.1); }
+
+    @media (max-width:768px){ .hero-content h1{ font-size: 2.4rem; } }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="container mx-auto px-6 py-4 flex items-center justify-between">
+    <a href="index.html" class="flex items-center gap-3">
+      <img src="images/logo.jpg" alt="BILACORE" class="h-14 w-auto rounded-lg">
+      <div>
+        <div class="text-xl font-extrabold text-white">Bilacore</div>
+        <div class="text-xs text-gray-400 tracking-wide">PETROLEUMS</div>
+      </div>
+    </a>
+
+    <nav class="hidden md:flex items-center gap-8 text-white/85 font-medium">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="products_services.html">Products & Services</a>
+      <a href="fuel-prices.html">Fuel Prices</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+
+    <div class="md:hidden">
+      <button id="menuBtn" class="p-2 rounded-md bg-white/10">Menu</button>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="relative overflow-hidden bg-black/90 py-28 text-center">
+    <img src="images/lubricants.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60" alt="Refinery">
+    <div class="absolute inset-0 bg-gradient-to-b from-black/60 to-black"></div>
+    <div class="relative text-center z-10" data-aos="fade-up">
+      <h1 class="text-5xl md:text-6xl font-extrabold mb-4 leading-tight">
+        Explore Our <span class="text-[var(--bilacore-accent)]">Services</span> & <span class="text-[var(--bilacore-accent-2)]">Products</span>
+      </h1>
+      <p class="text-lg text-white/85 mb-8 max-w-2xl mx-auto">
+        Comprehensive fuel, lubricant & fleet solutions tailored for your business.
+      </p>
+    </div>
+  </section>
+
+  <!-- Toggle Tabs -->
+  <section class="container mx-auto px-6 py-12 text-center">
+    <div class="inline-flex rounded-full bg-white/10 p-1 shadow-lg">
+      <button class="toggle-btn active" id="servicesBtn">Services</button>
+      <button class="toggle-btn" id="productsBtn">Products</button>
+    </div>
+  </section>
+
+  <!-- Services Grid -->
+  <section id="servicesTab" class="container mx-auto px-6 py-16 grid md:grid-cols-3 gap-6">
+    <article class="card" data-aos="fade-up">
+      <img src="images/background.png" alt="Fuel Supply">
+      <div class="card-content">
+        <h3 class="text-xl font-semibold">Fuel Supply & Distribution</h3>
+        <p class="text-white/80 mt-2">24/7 delivery • Bulk supply • Fleet fueling</p>
+      </div>
+    </article>
+
+    <article class="card" data-aos="fade-up" data-aos-delay="100">
+      <img src="images/lubricants.jpg" alt="Industrial Lubricants">
+      <div class="card-content">
+        <h3 class="text-xl font-semibold">Industrial Lubricants</h3>
+        <p class="text-white/80 mt-2">Engine oils • Hydraulic fluids • Grease</p>
+      </div>
+    </article>
+
+    <article class="card" data-aos="fade-up" data-aos-delay="200">
+      <img src="images/tank.jpg" alt="Equipment Maintenance">
+      <div class="card-content">
+        <h3 class="text-xl font-semibold">Equipment Maintenance</h3>
+        <p class="text-white/80 mt-2">Preventive maintenance • Inspections • Repairs</p>
+      </div>
+    </article>
+  </section>
+
+  <!-- Products Grid (2 columns) -->
+  <section id="productsTab" class="container mx-auto px-6 py-16 grid md:grid-cols-2 gap-6 hidden">
+    <article class="card" data-aos="fade-up">
+      <img src="images/Industrial Grease.jpeg" alt="Industrial Grease">
+      <div class="card-content">
+        <h3 class="text-xl font-semibold">Industrial Grease</h3>
+        <ul class="product-features">
+          <li>High-temperature performance</li>
+          <li>Long-lasting lubrication</li>
+          <li>Reduces wear and tear</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="card" data-aos="fade-up" data-aos-delay="100">
+      <img src="images/Hydraulic Fluid.jpg" alt="Hydraulic Fluid">
+      <div class="card-content">
+        <h3 class="text-xl font-semibold">Hydraulic Fluid</h3>
+        <ul class="product-features">
+          <li>High-pressure stability</li>
+          <li>Corrosion protection</li>
+          <li>Enhanced energy efficiency</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="card" data-aos="fade-up" data-aos-delay="200">
+      <img src="images/Engine Oil.jpg" alt="Engine Oil">
+      <div class="card-content">
+        <h3 class="text-xl font-semibold">Engine Oil</h3>
+        <ul class="product-features">
+          <li>High lubrication efficiency</li>
+          <li>Engine wear protection</li>
+          <li>Improved fuel economy</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="card" data-aos="fade-up" data-aos-delay="300">
+      <img src="images/Premium Diesel.jpg" alt="Premium Diesel">
+      <div class="card-content">
+        <h3 class="text-xl font-semibold">Premium Diesel</h3>
+        <ul class="product-features">
+          <li>High cetane rating</li>
+          <li>Cleaner combustion</li>
+          <li>Better engine performance</li>
+        </ul>
+      </div>
+    </article>
+  </section>
+
+  <!-- Our Process -->
+  <section class="py-20 bg-gradient-to-b from-black via-bilacore-black to-black text-center">
+    <div class="container mx-auto px-6 mb-12">
+      <h2 class="text-4xl font-extrabold text-[var(--bilacore-accent)] mb-4" data-aos="fade-up">Our Process</h2>
+      <p class="text-white/80 max-w-2xl mx-auto mb-10" data-aos="fade-up" data-aos-delay="100">A systematic approach to ensure exceptional service delivery at every step.</p>
+    </div>
+    <div class="container mx-auto px-6 grid md:grid-cols-4 gap-8">
+      <div class="p-6 bg-black/70 rounded-lg hover:scale-105 transition" data-aos="fade-up">
+        <div class="text-[var(--bilacore-accent)] font-bold text-3xl mb-2">01</div>
+        <h4 class="text-white font-semibold mb-2">Initial Consultation</h4>
+        <p class="text-white/80 text-sm">We discuss your specific needs and requirements to understand how we can best serve you.</p>
+      </div>
+      <div class="p-6 bg-black/70 rounded-lg hover:scale-105 transition" data-aos="fade-up" data-aos-delay="100">
+        <div class="text-[var(--bilacore-accent)] font-bold text-3xl mb-2">02</div>
+        <h4 class="text-white font-semibold mb-2">Custom Solution</h4>
+        <p class="text-white/80 text-sm">Our team develops a tailored solution that matches your business requirements and budget.</p>
+      </div>
+      <div class="p-6 bg-black/70 rounded-lg hover:scale-105 transition" data-aos="fade-up" data-aos-delay="200">
+        <div class="text-[var(--bilacore-accent)] font-bold text-3xl mb-2">03</div>
+        <h4 class="text-white font-semibold mb-2">Implementation</h4>
+        <p class="text-white/80 text-sm">We execute the plan with precision, ensuring minimal disruption to your operations.</p>
+      </div>
+      <div class="p-6 bg-black/70 rounded-lg hover:scale-105 transition" data-aos="fade-up" data-aos-delay="300">
+        <div class="text-[var(--bilacore-accent)] font-bold text-3xl mb-2">04</div>
+        <h4 class="text-white font-semibold mb-2">Ongoing Support</h4>
+        <p class="text-white/80 text-sm">Regular follow-ups and continuous support to ensure your satisfaction and success.</p>
+      </div>
+    </div>
+    <div class="mt-12 text-center" data-aos="fade-up" data-aos-delay="400">
+      <a href="contact.html" class="px-8 py-3 bg-[var(--bilacore-accent)] text-black rounded-md font-semibold shadow-glow-accent hover:scale-105 transition">Ready to Get Started? Start Your Journey</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-12 text-white relative">
+    <div class="container mx-auto px-6 grid md:grid-cols-3 gap-10 relative z-10">
+      <div>
+        <img src="images/logo.jpg" alt="Bilacore" class="h-16 mb-3 rounded-md">
+        <p class="font-semibold text-lg">BILACORE PETROLEUMS</p>
+        <p class="text-sm text-gray-400">Powering industries with precision, speed & integrity.</p>
+        <div class="flex gap-3 mt-4">
+          <a href="#" class="footer-icon"><img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" class="w-5" alt="Facebook"></a>
+          <a href="#" class="footer-icon"><img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" class="w-5" alt="Twitter"></a>
+          <a href="#" class="footer-icon"><img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" class="w-5" alt="LinkedIn"></a>
+        </div>
+      </div>
+      <div>
+        <h4 class="font-bold mb-3 text-[var(--accent)]">Quick Links</h4>
+        <ul class="space-y-2 text-gray-300">
+         <li><a href="products_services.html"class="hover:text-[var(--accent)]">Products & Services</a></li>
+          <li><a href="fuel-prices.html" class="hover:text-[var(--accent)]">Fuel Prices</a></li>
+          <li><a href="about.html" class="hover:text-[var(--accent)]">About</a></li>
+          <li><a href="contact.html" class="hover:text-[var(--accent)]">Contact</a></li>
+        </ul>
+      </div>
+            <div class="flex flex-col space-y-6 text-white/90" data-aos="fade-left">
+  <!-- Phone -->
+  <div class="flex items-center gap-4">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-orange-500 drop-shadow-[0_0_10px_rgba(255,107,26,0.6)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.586a1 1 0 01.707.293l2.414 2.414a1 1 0 01.293.707V7a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
+      <path stroke-linecap="round" stroke-linejoin="round" d="M16 7h4a2 2 0 012 2v2.586a1 1 0 01-.293.707l-2.414 2.414a1 1 0 01-.707.293H16a2 2 0 01-2-2v-4a2 2 0 012-2z"/>
+    </svg>
+    <span>+27 65 966 4121</span>
+  </div>
+
+  <!-- Address -->
+  <div class="flex items-center gap-4">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-orange-500 drop-shadow-[0_0_10px_rgba(255,107,26,0.6)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M12 2C8.134 2 5 5.134 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.866-3.134-7-7-7z"/>
+      <circle cx="12" cy="9" r="2" stroke="none" fill="currentColor"/>
+    </svg>
+    <span>318 Zone B, Park Ave, Lulekani</span>
+  </div>
+
+  <!-- Email -->
+  <div class="flex items-center gap-4">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-orange-500 drop-shadow-[0_0_10px_rgba(255,107,26,0.6)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M16 12H8m8-4H8m0 8h8m2 2H6a2 2 0 01-2-2V6a2 2 0 012-2h12a2 2 0 012 2v12a2 2 0 01-2 2z"/>
+    </svg>
+    <span>info@bilacorepetroleums.co.za</span>
+  </div>
+</div>
+    </div>
+    <div class="text-center text-gray-500 text-sm mt-10">© 2025 Bilacore Petroleums. All rights reserved.</div>
+  </footer>
+
+  <script>
+    AOS.init({ once:true, duration:800, easing:'ease-out-cubic' });
+
+    // Toggle tabs
+    const servicesBtn = document.getElementById("servicesBtn");
+    const productsBtn = document.getElementById("productsBtn");
+    const servicesTab = document.getElementById("servicesTab");
+    const productsTab = document.getElementById("productsTab");
+
+    servicesBtn.addEventListener("click", () => {
+      servicesTab.classList.remove("hidden");
+      productsTab.classList.add("hidden");
+      servicesBtn.classList.add("active");
+      productsBtn.classList.remove("active");
+    });
+
+    productsBtn.addEventListener("click", () => {
+      productsTab.classList.remove("hidden");
+      servicesTab.classList.add("hidden");
+      productsBtn.classList.add("active");
+      servicesBtn.classList.remove("active");
+    });
+
+    // Header scroll effect
+    window.addEventListener("scroll", () => {
+      const header = document.querySelector("header");
+      header.classList.toggle("scrolled", window.scrollY > 10);
+    });
+  </script>
+</body>
+</html>
